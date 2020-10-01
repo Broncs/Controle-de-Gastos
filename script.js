@@ -21,7 +21,7 @@ let transactions =
   localStorage.getItem("transactions") !== null ? localStorageTransactions : [];
 
 // add transaction
-const addTransction(e) => {
+const addTransction = (e) => {
   if (text.value.trim() === "" || amount.value.trim() === "") {
     alert("Por favor adicione um texto e um valor");
   } else {
@@ -50,7 +50,7 @@ const generateID = () => {
 }
 
 // add transactions to DOM list
-const addTrasactionDOM(transaction) => {
+const addTrasactionDOM = (transaction) => {
   // get sign
   const sign = transaction.amount < 0 ? "-" : "+";
 
