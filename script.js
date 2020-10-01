@@ -21,7 +21,7 @@ let transactions =
   localStorage.getItem("transactions") !== null ? localStorageTransactions : [];
 
 // add transaction
-function addTransction(e) {
+const addTransction(e) => {
   if (text.value.trim() === "" || amount.value.trim() === "") {
     alert("Por favor adicione um texto e um valor");
   } else {
@@ -45,12 +45,12 @@ function addTransction(e) {
 }
 
 // generate random ID
-function generateID() {
+const generateID = () => {
   return Math.floor(Math.random() * 10000000);
 }
 
 // add transactions to DOM list
-function addTrasactionDOM(transaction) {
+const addTrasactionDOM(transaction) => {
   // get sign
   const sign = transaction.amount < 0 ? "-" : "+";
 
@@ -70,8 +70,8 @@ function addTrasactionDOM(transaction) {
 }
 
 // update the valance,income and expense
-function updateValues() {
-  const amounts = transactions.map((transaction) => transaction.amount);
+const updateValues = () => {
+  const amounts = transactions.map(transaction => transaction.amount);
 
   const total = amounts
     .reduce((acc, item) => {
@@ -80,12 +80,12 @@ function updateValues() {
     .toFixed(2);
 
   const income = amounts
-    .filter((item) => item > 0)
+    .filter(item => item > 0)
     .reduce((acc, item) => (acc += item), 0)
     .toFixed(2);
 
   const expense = (
-    amounts.filter((item) => item < 0).reduce((acc, item) => (acc += item), 0) *
+    amounts.filter(item => item < 0).reduce((acc, item) => (acc += item), 0) *
     -1
   ).toFixed(2);
 
@@ -95,8 +95,8 @@ function updateValues() {
 }
 
 // remove transaction by Id
-function removeTransaction(id) {
-  transactions = transactions.filter((transaction) => transaction.id !== id);
+const removeTransaction = (id) => {
+  transactions = transactions.filter(transaction => transaction.id !== id);
 
   updateLocalStorage();
 
@@ -104,12 +104,12 @@ function removeTransaction(id) {
 }
 
 // update local storage transactions
-function updateLocalStorage() {
+const updateLocalStorage = () => {
   localStorage.setItem("transactions", JSON.stringify(transactions));
 }
 
 // init app
-function init() {
+const  init = () => {
   list.innerHTML = "";
   transactions.forEach(addTrasactionDOM);
   updateValues();
